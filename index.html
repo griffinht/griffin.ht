@@ -3,18 +3,9 @@
 <html>
 <head>
 <title>{{ site.title }}</title>
-<style>
-:root {
-    --base: #ffffff;
-    --light: #ffffff;
-}
-body {
-    background-color: var(--base);
-}
-</style>
 </head>
 <body>
-<!--<input readonly type="text" style="
+<input readonly type="text" style="
 position: absolute;
 width: 100%;
 height: 100%;
@@ -22,74 +13,15 @@ top: 0;
 left: 0;
 border: 0;
 z-index: -1;
-">-->
+">
 <h1>{{ site.title }}</h1>
 <div style="
 display: flex;
 flex-direction: column;
 align-items: center;
-background-color: var(--light);
 ">
     <h2>this website just has a cool domain name, go to my real website</h2>
     <a href="https://griffinht.com">griffinht.com</a>
 </div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-<input id="palette" type="text" readonly style="
-width: 1px;
-height: 1px;
-border: 0;
-position: absolute;
-bottom: 0;
-right: 0;
-padding: 0;
-">
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script>
-async function getColor(element, x, y, width, height) {
-    let canvas = await html2canvas(element);
-    return canvas.getContext('2d').getImageData(x, y, width, height).data;
-}
-
-async function sample(element) {
-    let color = await getColor(element, 0, 0, 1, 1);
-    element.remove();
-    return color;
-}
-//https://stackoverflow.com/a/54071699
-function rgb2hsl(r,g,b) {
-    let v=Math.max(r,g,b), c=v-Math.min(r,g,b), f=(1-Math.abs(v+v-c-1));
-    let h= c && ((v==r) ? (g-b)/c : ((v==g) ? 2+(b-r)/c : 4+(r-g)/c));
-    return [60*(h<0?h+6:h), f ? c/f : 0, (v+v-c)/2];
-}
-let hsl2hsv = (h,s,l,v=s*Math.min(l,1-l)+l) => [h, v?2-2*l/v:0, v];
-
-let hsv2hsl = (h,s,v,l=v-v*s/2, m=Math.min(l,1-l)) => [h,m?(v-l)/m:0,l];
-
-async function main() {
-    function set(element, name, hsl) {
-        element.style.setProperty('--' + name, 'hsl(' + (hsl[0]) + ',' + (hsl[1] * 100) + '%,' + (hsl[2] * 100) + '%)');
-    }
-    let rgb = await sample(document.getElementById("palette"));
-    let hsl = rgb2hsl(rgb[0] / 255, rgb[1] / 255, rgb[2] / 255);
-    let root = document.querySelector(':root');
-    set(root, 'base', hsl);
-    let hsv = hsl2hsv(hsl[0], hsl[1], hsl[2]);
-    hsv[1] = 0.1;
-    set(root, 'light', hsv2hsl(hsv[0], hsv[1], hsv[2]));
-}
-main();
-</script>
 </body>
 </html>
