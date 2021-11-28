@@ -2,9 +2,11 @@ default: init build
 .PHONY: build # otherwise Make will relate the build target to the build output directory and won't run the build target
 
 init:
+	# html-minifier installed already?
 	if command -v html-minifier; then \
 		exit 0; \
 	fi; \
+	# root user?
 	if [[ $(id -u) -ne 0 ]]; then \
   		npm install html-minifier -g; \
 	else \
