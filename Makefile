@@ -2,7 +2,14 @@ default: init build
 .PHONY: build
 
 init:
-	npm install html-minifier -g
+	if command -v html-minifier; then \
+		exit 0; \
+	fi; \
+	if [[ $(id -u) -ne 0 ]]; then \
+  		npm install html-minifier -g; \
+	else \
+		sudo npm install html-minifier -g; \
+	fi
 build: clean
 	mkdir build
 	html-minifier \
@@ -17,4 +24,4 @@ build: clean
 		--minify-js true \
 		< src/index.html > build/index.html
 clean:
-	rm -r build
+	rm -rf build
