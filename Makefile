@@ -27,3 +27,5 @@ build: clean
 		< src/index.html > build/index.html
 clean:
 	rm -rf build
+develop:
+	docker run --rm -v "$(shell pwd)"/build:/usr/share/nginx/html:ro --publish 8080:80 nginx
