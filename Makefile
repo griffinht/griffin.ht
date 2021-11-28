@@ -8,8 +8,9 @@ init:
 # you will probably also want to disable browser cache
 develop: build
 	./develop.sh
-build: clean
-#	mkdir build
+build:
+	rm -rf build/*
+	mkdir -p build
 	html-minifier \
 		--collapse-whitespace \
 		--remove-comments \
@@ -22,4 +23,4 @@ build: clean
 		--minify-js true \
 		< src/index.html > build/index.html
 clean:
-#	rm -rf build
+	rm -rf build
