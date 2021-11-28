@@ -1,5 +1,5 @@
 default: init build
-.PHONY: build
+.PHONY: build # otherwise Make will relate the build target to the build output directory and won't run the build target
 
 init:
 	if command -v html-minifier; then \
