@@ -67,6 +67,7 @@ async function sample(element) {
     element.remove();
     return color;
 }
+//https://stackoverflow.com/a/54071699
 function rgb2hsl(r,g,b) {
     let v=Math.max(r,g,b), c=v-Math.min(r,g,b), f=(1-Math.abs(v+v-c-1));
     let h= c && ((v==r) ? (g-b)/c : ((v==g) ? 2+(b-r)/c : 4+(r-g)/c));
