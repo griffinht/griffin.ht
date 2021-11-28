@@ -1,0 +1,4 @@
+baseurl: ""
+exclude:
+   - .idea
+title: griffin.ht
