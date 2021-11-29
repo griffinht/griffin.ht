@@ -7,10 +7,10 @@ trap "docker rm --force '$(docker run --rm -v "$(pwd)"/build:/usr/share/nginx/ht
 
 # install inotify-tools
 if ! command -v inotifywait > /dev/null; then
-  if $(id -u) -ne 0; then
-    apt install inotify-tools;
-  else
+  if [[ $(id -u) -ne 0 ]]; then
     sudo apt install inotify-tools;
+  else
+    apt install inotify-tools;
   fi
 fi
 
