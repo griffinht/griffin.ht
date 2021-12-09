@@ -24,3 +24,6 @@ build:
 		< src/index.html > build/index.html
 clean:
 	rm -rf build
+docker:
+        docker build . --tag stzups/griffin.ht:latest
+
