@@ -25,5 +25,4 @@ build:
 clean:
 	rm -rf build
 docker:
-        docker build . --tag stzups/griffin.ht:latest
-
+	docker build --tag stzups/griffin.ht:latest .

@@ -7,4 +7,4 @@ RUN make
 
 FROM scratch
 
-COPY --from=build /usr/src/build /html
+COPY --from=build /usr/src/build /html/griffin.ht/
