@@ -15,4 +15,4 @@ if ! command -v inotifywait > /dev/null; then
 fi
 
 # build when changes are detected in src dir
-while inotifywait -e close_write ./src; do make build; done
+while inotifywait -e close_write ./src; sleep 0.1; do make build; done
